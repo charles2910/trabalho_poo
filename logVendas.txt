@@ -1,0 +1,7 @@
+**************************************************
+Pedido:1
+Vendedor:User1(sem senha)  (ADM)
+Cliente:josé
+Tipo de Pagamento:Dinheiro
+Produtos Pedidos:agua,2
+Valor Total (R$):20.0
