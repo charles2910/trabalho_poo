@@ -10,6 +10,7 @@ public class GrcProdutos_P extends javax.swing.JPanel {
 
   public GrcProdutos_P(UIGovernor_F janela) {
     this.janela = janela;
+    this.framePrincipal = janela.getFrame();
     initComponents();
   }
 
@@ -24,10 +25,10 @@ public class GrcProdutos_P extends javax.swing.JPanel {
     jComboBox1 = new javax.swing.JComboBox<>();
     jScrollPane1 = new javax.swing.JScrollPane();
     jTable1 = new javax.swing.JTable();
-    jButton1 = new javax.swing.JButton();
-    jButton2 = new javax.swing.JButton();
-    jButton3 = new javax.swing.JButton();
-    jButton4 = new javax.swing.JButton();
+    botaoAdd = new javax.swing.JButton();
+    botaoEdit = new javax.swing.JButton();
+    botaoIn = new javax.swing.JButton();
+    botaoOut = new javax.swing.JButton();
     jButton5 = new javax.swing.JButton();
     jButton6 = new javax.swing.JButton();
     tableData1 =
@@ -37,9 +38,12 @@ public class GrcProdutos_P extends javax.swing.JPanel {
     int size = Estoque.sizeOfEstoque();
     if (size > 0) {
       for (int i = 0; i < size; i++) {
-        Object[] data = Estoque.buscarProduto(i).toData();
-        data[0] = new Integer(i);
-        tableData1.addRow(data);
+        Produto p = Estoque.buscarProduto(i);
+        if (p != null) {
+          Object[] data = p.toData();
+          data[0] = new Integer(i);
+          tableData1.addRow(data);
+        }
       }
     }
 
@@ -51,15 +55,13 @@ public class GrcProdutos_P extends javax.swing.JPanel {
 
     jScrollPane1.setViewportView(jTable1);
 
-    jButton1.setText("Cadastrar Produto (F1)");
+    botaoAdd.setText("Cadastrar Produto");
 
-    jButton2.setText("Editar Produto (F2)");
+    botaoEdit.setText("Editar Produto");
 
-    jButton3.setText("Excluir Produto (F3)");
+    botaoIn.setText("Entrada no Estoque");
 
-    jButton4.setText("Entrada no Estoque");
-
-    jButton5.setText("Saída no Estoque");
+    botaoOut.setText("Saída no Estoque");
 
     jButton6.setText("Menu");
     jButton6.addMouseListener(
@@ -84,17 +86,6 @@ public class GrcProdutos_P extends javax.swing.JPanel {
                             .addGroup(
                                 layout
                                     .createSequentialGroup()
-                                    .addComponent(
-                                        jButton4,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        150,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(34, 34, 34)
-                                    .addComponent(
-                                        jButton5,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        150,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(
                                         javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                         javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -116,23 +107,29 @@ public class GrcProdutos_P extends javax.swing.JPanel {
                                                 layout
                                                     .createSequentialGroup()
                                                     .addComponent(
-                                                        jButton1,
+                                                        botaoAdd,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         150,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(34, 34, 34)
                                                     .addComponent(
-                                                        jButton2,
+                                                        botaoEdit,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         150,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(37, 37, 37)
                                                     .addComponent(
-                                                        jButton3,
+                                                        botaoIn,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         150,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(212, 212, 212))
+                                                    .addGap(34, 34, 34)
+                                                    .addComponent(
+                                                        botaoOut,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        150,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(37, 37, 37))
                                             .addComponent(
                                                 jScrollPane1,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -150,17 +147,22 @@ public class GrcProdutos_P extends javax.swing.JPanel {
                         layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(
-                                jButton1,
+                                botaoAdd,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 70,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(
-                                jButton2,
+                                botaoEdit,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 70,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(
-                                jButton3,
+                                botaoIn,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                70,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(
+                                botaoOut,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 70,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,16 +176,6 @@ public class GrcProdutos_P extends javax.swing.JPanel {
                     .addGroup(
                         layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(
-                                jButton4,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(
-                                jButton5,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(
                                 jButton6,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -199,10 +191,11 @@ public class GrcProdutos_P extends javax.swing.JPanel {
   } // GEN-LAST:event_jButton6MouseClicked
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButton2;
-  private javax.swing.JButton jButton3;
-  private javax.swing.JButton jButton4;
+  private javax.swing.JFrame framePrincipal;
+  private javax.swing.JButton botaoAdd;
+  private javax.swing.JButton botaoEdit;
+  private javax.swing.JButton botaoIn;
+  private javax.swing.JButton botaoOut;
   private javax.swing.JButton jButton5;
   private javax.swing.JButton jButton6;
   private javax.swing.JComboBox<String> jComboBox1;
