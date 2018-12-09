@@ -5,35 +5,38 @@
  */
 package Classes_UI;
 
+import Classes_Base.Estoque;
 import static Classes_Base.ListaDeVendas.adicionarPedido;
 import static Classes_Base.ListaDeVendas.gravarLogVendas;
-import static Classes_Base.ListaDeVendas.listarTodosPedidos;
 import Classes_Base.Pedido;
 import Classes_Base.Produto;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Está classe tem a função de gerenciar cada componente da interface gráfica da janela de vendas,atribuindo as funcionalidades aos componentes como labels,
+ * textFields e botões.
  * @author niloc
  */
 public class MenuVendas extends javax.swing.JFrame {
-    //Um novo pedido é criado.
+    //Um novo pedido é criado quando abre o menu de vendas
     private Pedido novoPedido = new Pedido();
+    
     /**
-     * Creates new form MenuVendas
-     * @param vendedor
+     * Construtor de MenuVendas
+     * @param vendedor usuário atual do programa
      */
     public MenuVendas(String vendedor) {
         initComponents();
         labelFunc.setText(vendedor);
         novoPedido.setIdVendedor(vendedor);
     }
-    
-    //remove produto do carrinho
+
+    /**
+     * Método que remove produto do carrinho de compras
+     * @param nome nome do produto que será removido
+     * @return true se o produto foi removido com sucesso, false se o produto não foi removido com sucesso(não está no carrinho)
+     */
     public boolean removeProdCarrinho(String nome)
     {
         for(int i=0;i<novoPedido.getProdutosPedidos().size();i++)
@@ -46,7 +49,12 @@ public class MenuVendas extends javax.swing.JFrame {
         }
         return false;
     }
-    //busca se algum produto já está no carrinho
+
+    /**
+     * Método que busca se algum produto já está no carrinho
+     * @param nome nome do produto procurado
+     * @return true se o produto está no carrinho de compras, false se não está
+     */
     public boolean buscaProdCarrinho(String nome)
     {
         for(int i=0;i<novoPedido.getProdutosPedidos().size();i++)
@@ -58,7 +66,12 @@ public class MenuVendas extends javax.swing.JFrame {
         }
         return false;
     }
-    //Se um produto ja está no carrinho, quando adicionar outro do mesmo nome a quantidade é alterada.
+
+    /**
+     * Método que altera a quantidade do produto pedido no carrinho
+     * @param nome nome do produto
+     * @param qtd nova quantidade adicionada
+     */
     public void trocaQtdProdCarrinho(String nome,int qtd)
     {
         for(int i=0;i<novoPedido.getProdutosPedidos().size();i++)
@@ -70,6 +83,9 @@ public class MenuVendas extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Fecha o menu de venda
+     */
     public void fecharJanela()
     {
         this.dispose();
@@ -113,8 +129,6 @@ public class MenuVendas extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Funcionário:");
-
-        labelFunc.setText("oi");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nome do cliente:");
@@ -336,7 +350,7 @@ public class MenuVendas extends javax.swing.JFrame {
         {
             if(removeProdCarrinho(textRemovProd.getText()))
             {
-                labelValorTotal.setText(""+novoPedido.SomaTotalDosPedidos());
+                labelValorTotal.setText(""+novoPedido.somaTotalDosPedidos());
                 JOptionPane.showMessageDialog(new JFrame(),"Produto Removido do carrinho.");
             }
             else
@@ -355,13 +369,13 @@ public class MenuVendas extends javax.swing.JFrame {
         {
             novoPedido.setNomeCliente(textClienteName.getText());
             novoPedido.setTipoDePagamento(comboBoxTP.getSelectedItem()+"");
-            JOptionPane.showMessageDialog(new JFrame(),"Venda Realizada. Valor: R$ "+novoPedido.SomaTotalDosPedidos());
+            JOptionPane.showMessageDialog(new JFrame(),"Venda Realizada. Valor: R$ "+novoPedido.somaTotalDosPedidos());
             adicionarPedido(novoPedido);
-            listarTodosPedidos();
-            //reduzir estoque.
+            for(int i=0;i<novoPedido.getProdutosPedidos().size();i++)
+            {
+                Estoque.reduzirQtdProduto(novoPedido.getProdutosPedidos().get(i).getNome(), novoPedido.getProdutosPedidos().get(i).getQuantidade());
+            }
             gravarLogVendas();
-            
-            
             fecharJanela();
         }
     }//GEN-LAST:event_finishButtonActionPerformed
@@ -373,8 +387,9 @@ public class MenuVendas extends javax.swing.JFrame {
         }
         else
         {
-         // if(textAddProd.getText() esta na lista de estoque)
-           // {
+          try {
+            if(Estoque.buscarProduto(textAddProd.getText())!=null) //se a busca for diferente de null, o produto existe na lista
+            {
                 boolean flag=true;
                 try {
                     int testaEntrada = Integer.parseInt(textQtd.getText()) - 1;
@@ -384,30 +399,31 @@ public class MenuVendas extends javax.swing.JFrame {
                 }
                 if(flag==true)
                 {
-                   // if((Integer.parseInt(textQtd.getText())>0)&&(Integer.parseInt(textQtd.getText())>= conferir estoque para o produto))   //Se tiver a qtd ideal de estoque
-                   // {
+                    if((Integer.parseInt(textQtd.getText())>0)&&(Integer.parseInt(textQtd.getText())<= Estoque.buscarProduto(textAddProd.getText()).getQuantidade()))
+                    {   //Se a qtd pedida for menor ou igual ao estoque, o pedido é valido e se a quantidade pedida for maior que zero também.
                         if(buscaProdCarrinho(textAddProd.getText()))
                         {
                             trocaQtdProdCarrinho(textAddProd.getText(),Integer.parseInt(textQtd.getText()));
-                            labelValorTotal.setText(""+novoPedido.SomaTotalDosPedidos());
+                            labelValorTotal.setText(""+novoPedido.somaTotalDosPedidos());
                         }
                         else
                         {
-                            novoPedido.getProdutosPedidos().add(new Produto(textAddProd.getText(),Integer.parseInt(textQtd.getText()),10));
-                            labelValorTotal.setText(""+novoPedido.SomaTotalDosPedidos());
+                            novoPedido.getProdutosPedidos().add(new Produto(textAddProd.getText(),Integer.parseInt(textQtd.getText()),Estoque.buscarProduto(textAddProd.getText()).getPreco()));
+                            labelValorTotal.setText(""+novoPedido.somaTotalDosPedidos());
                         }
                         JOptionPane.showMessageDialog(new JFrame(),"Produto adicionado ao carrinho.");
-                   // }
-                   /* else
+                    }
+                    else
                     {
                         JOptionPane.showMessageDialog(new JFrame(),"Erro na quantidade pedida ou falta de estoque");        
-                    }*/
+                    }
                 }
-           // }
-            /*else
+            } 
+          }
+            catch (NullPointerException e)
             {
-                JOptionPane.showMessageDialog(new JFrame(),"Produto Inválido");    
-            }*/
+                JOptionPane.showMessageDialog(new JFrame(),"Produto Inválido");
+            }
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
