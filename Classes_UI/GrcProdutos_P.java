@@ -10,7 +10,7 @@ public class GrcProdutos_P extends javax.swing.JPanel {
 
   public GrcProdutos_P(UIGovernor_F janela) {
     this.janela = janela;
-    this.framePrincipal = janela.getFrame();
+
     initComponents();
   }
 
@@ -21,7 +21,7 @@ public class GrcProdutos_P extends javax.swing.JPanel {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-
+    this.framePrincipal = janela.getFrame();
     jComboBox1 = new javax.swing.JComboBox<>();
     jScrollPane1 = new javax.swing.JScrollPane();
     jTable1 = new javax.swing.JTable();
@@ -56,12 +56,36 @@ public class GrcProdutos_P extends javax.swing.JPanel {
     jScrollPane1.setViewportView(jTable1);
 
     botaoAdd.setText("Cadastrar Produto");
+    botaoAdd.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoAddClicked(evt);
+          }
+        });
 
     botaoEdit.setText("Editar Produto");
+    botaoEdit.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoEditClicked(evt);
+          }
+        });
 
     botaoIn.setText("Entrada no Estoque");
+    botaoIn.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoInClicked(evt);
+          }
+        });
 
     botaoOut.setText("Saída no Estoque");
+    botaoOut.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoOutClicked(evt);
+          }
+        });
 
     jButton6.setText("Menu");
     jButton6.addMouseListener(
@@ -183,6 +207,28 @@ public class GrcProdutos_P extends javax.swing.JPanel {
                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(25, Short.MAX_VALUE)));
   } // </editor-fold>//GEN-END:initComponents
+
+  private void botaoAddClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+  }
+
+  private void botaoEditClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
+
+  private void botaoInClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
+
+  private void botaoOutClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
 
   private void jButton6MouseClicked(
       java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked

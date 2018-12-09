@@ -39,7 +39,7 @@ public class UIGovernor_F extends JFrame {
 
   protected void
       reLogin() { // método usado quando for necessário obrigar novo login (usuário logado se
-                  // deletou)
+    // deletou)
     framePrincipal.setVisible(false);
     framePrincipal.removeAll();
     framePrincipal = new JFrame();
@@ -115,6 +115,6 @@ public class UIGovernor_F extends JFrame {
   }
 
   public JFrame getFrame() {
-    return framePrincipal;
+    return this.framePrincipal;
   }
 }
