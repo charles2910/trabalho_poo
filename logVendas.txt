@@ -1,7 +1,14 @@
 **************************************************
 Pedido:1
 Vendedor:User1(sem senha)  (ADM)
-Cliente:josé
+Cliente:carlos
 Tipo de Pagamento:Dinheiro
-Produtos Pedidos:agua,2
+Produtos Pedidos(nome,quantidade):Cereal,2 | Café,2
+Valor Total (R$):56.0
+**************************************************
+Pedido:2
+Vendedor:User1(sem senha)  (ADM)
+Cliente:carlos
+Tipo de Pagamento:Dinheiro
+Produtos Pedidos(nome,quantidade):Café,2
 Valor Total (R$):20.0

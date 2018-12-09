@@ -4,7 +4,7 @@ import Classes_UI.UIGovernor_F;
 
 public class Main {
   public static void main(String[] args) {
-    // lerLogVendas();
+    ListaDeVendas.lerLogVendas();
     Estoque loja = new Estoque();
 
     Usuários UserBase = new Usuários();

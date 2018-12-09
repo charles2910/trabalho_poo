@@ -1,16 +1,16 @@
 package Classes_UI;
 
 import Classes_Base.*;
+import javax.swing.*;
 
 /** @author Mateus */
-public class GrcProdutos_P extends javax.swing.JPanel {
+public class GrcProdutos_P extends JPanel {
 
   /** Creates new form MenuGestãoProdutos */
   UIGovernor_F janela;
 
   public GrcProdutos_P(UIGovernor_F janela) {
     this.janela = janela;
-    this.framePrincipal = janela.getFrame();
     initComponents();
   }
 
@@ -21,16 +21,16 @@ public class GrcProdutos_P extends javax.swing.JPanel {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-
-    jComboBox1 = new javax.swing.JComboBox<>();
-    jScrollPane1 = new javax.swing.JScrollPane();
+    this.framePrincipal = janela.getFrame();
+    jComboBox1 = new JComboBox<>();
+    jScrollPane1 = new JScrollPane();
     jTable1 = new javax.swing.JTable();
-    botaoAdd = new javax.swing.JButton();
-    botaoEdit = new javax.swing.JButton();
-    botaoIn = new javax.swing.JButton();
-    botaoOut = new javax.swing.JButton();
-    jButton5 = new javax.swing.JButton();
-    jButton6 = new javax.swing.JButton();
+    botaoAdd = new JButton();
+    botaoEdit = new JButton();
+    botaoIn = new JButton();
+    botaoOut = new JButton();
+    jButton5 = new JButton();
+    jButton6 = new JButton();
     tableData1 =
         new javax.swing.table.DefaultTableModel(
             new String[] {"Código", "Nome", "Quantidade", "Preço"}, 0);
@@ -48,20 +48,43 @@ public class GrcProdutos_P extends javax.swing.JPanel {
     }
 
     jComboBox1.setModel(
-        new javax.swing.DefaultComboBoxModel<>(
-            new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
+        new DefaultComboBoxModel<>(new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
 
     jTable1.setModel(tableData1);
 
     jScrollPane1.setViewportView(jTable1);
 
     botaoAdd.setText("Cadastrar Produto");
+    botaoAdd.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoAddClicked(evt);
+          }
+        });
 
     botaoEdit.setText("Editar Produto");
+    botaoEdit.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoEditClicked(evt);
+          }
+        });
 
     botaoIn.setText("Entrada no Estoque");
+    botaoIn.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoInClicked(evt);
+          }
+        });
 
     botaoOut.setText("Saída no Estoque");
+    botaoOut.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseClicked(java.awt.event.MouseEvent evt) {
+            botaoOutClicked(evt);
+          }
+        });
 
     jButton6.setText("Menu");
     jButton6.addMouseListener(
@@ -71,136 +94,153 @@ public class GrcProdutos_P extends javax.swing.JPanel {
           }
         });
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    GroupLayout layout = new GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
         layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(
                 layout
                     .createSequentialGroup()
                     .addGap(34, 34, 34)
                     .addGroup(
                         layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(
                                 layout
                                     .createSequentialGroup()
                                     .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        LayoutStyle.ComponentPlacement.RELATED,
+                                        GroupLayout.DEFAULT_SIZE,
                                         Short.MAX_VALUE)
                                     .addComponent(
                                         jButton6,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        GroupLayout.PREFERRED_SIZE,
                                         86,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        GroupLayout.PREFERRED_SIZE)
                                     .addGap(55, 55, 55))
                             .addGroup(
                                 layout
                                     .createSequentialGroup()
                                     .addGroup(
                                         layout
-                                            .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .createParallelGroup(GroupLayout.Alignment.TRAILING)
                                             .addGroup(
                                                 layout
                                                     .createSequentialGroup()
                                                     .addComponent(
                                                         botaoAdd,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        GroupLayout.PREFERRED_SIZE,
                                                         150,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        GroupLayout.PREFERRED_SIZE)
                                                     .addGap(34, 34, 34)
                                                     .addComponent(
                                                         botaoEdit,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        GroupLayout.PREFERRED_SIZE,
                                                         150,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        GroupLayout.PREFERRED_SIZE)
                                                     .addGap(37, 37, 37)
                                                     .addComponent(
                                                         botaoIn,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        GroupLayout.PREFERRED_SIZE,
                                                         150,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        GroupLayout.PREFERRED_SIZE)
                                                     .addGap(34, 34, 34)
                                                     .addComponent(
                                                         botaoOut,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        GroupLayout.PREFERRED_SIZE,
                                                         150,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        GroupLayout.PREFERRED_SIZE)
                                                     .addGap(37, 37, 37))
                                             .addComponent(
                                                 jScrollPane1,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                GroupLayout.PREFERRED_SIZE,
                                                 733,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                GroupLayout.PREFERRED_SIZE))
                                     .addContainerGap(33, Short.MAX_VALUE)))));
     layout.setVerticalGroup(
         layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(
                 layout
                     .createSequentialGroup()
                     .addGap(35, 35, 35)
                     .addGroup(
                         layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(
                                 botaoAdd,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.PREFERRED_SIZE,
                                 70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                GroupLayout.PREFERRED_SIZE)
                             .addComponent(
                                 botaoEdit,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.PREFERRED_SIZE,
                                 70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                GroupLayout.PREFERRED_SIZE)
                             .addComponent(
-                                botaoIn,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                botaoIn, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                             .addComponent(
                                 botaoOut,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.PREFERRED_SIZE,
                                 70,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                GroupLayout.PREFERRED_SIZE))
                     .addGap(29, 29, 29)
                     .addComponent(
-                        jScrollPane1,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        353,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                        jScrollPane1, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addGroup(
                         layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(
                                 jButton6,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.PREFERRED_SIZE,
                                 43,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(25, Short.MAX_VALUE)));
   } // </editor-fold>//GEN-END:initComponents
 
+  private void botaoAddClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    new AbrirAddProdutos_F().makeFrameAddProdutos();
+  }
+
+  private void botaoEditClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
+
+  private void botaoInClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
+
+  private void botaoOutClicked(
+      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    janela.removeMenuGerencProdutos();
+    janela.menuOPC();
+  }
+
   private void jButton6MouseClicked(
       java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
+    Estoque.gravarEstoque();
     janela.removeMenuGerencProdutos();
     janela.menuOPC();
   } // GEN-LAST:event_jButton6MouseClicked
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JFrame framePrincipal;
-  private javax.swing.JButton botaoAdd;
-  private javax.swing.JButton botaoEdit;
-  private javax.swing.JButton botaoIn;
-  private javax.swing.JButton botaoOut;
-  private javax.swing.JButton jButton5;
-  private javax.swing.JButton jButton6;
-  private javax.swing.JComboBox<String> jComboBox1;
-  private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTable jTable1;
+  private JFrame framePrincipal;
+  private JButton botaoAdd;
+  private JButton botaoEdit;
+  private JButton botaoIn;
+  private JButton botaoOut;
+  private JButton jButton5;
+  private JButton jButton6;
+  private JComboBox<String> jComboBox1;
+  private JScrollPane jScrollPane1;
+  private JTable jTable1;
   private javax.swing.table.DefaultTableModel tableData1;
   // End of variables declaration//GEN-END:variables
 }
