@@ -376,6 +376,7 @@ public class MenuVendas extends javax.swing.JFrame {
                 Estoque.reduzirQtdProduto(novoPedido.getProdutosPedidos().get(i).getNome(), novoPedido.getProdutosPedidos().get(i).getQuantidade());
             }
             gravarLogVendas();
+            
             fecharJanela();
         }
     }//GEN-LAST:event_finishButtonActionPerformed

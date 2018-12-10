@@ -27,7 +27,6 @@ public class GrcProdutos_P extends JPanel {
     jTable1 = new javax.swing.JTable();
     botaoAdd = new JButton();
     botaoEdit = new JButton();
-    jButton5 = new JButton();
     jButton6 = new JButton();
     tableData1 =
         new javax.swing.table.DefaultTableModel(
@@ -202,7 +201,6 @@ public class GrcProdutos_P extends JPanel {
   private JFrame framePrincipal;
   private JButton botaoAdd;
   private JButton botaoEdit;
-  private JButton jButton5;
   private JButton jButton6;
   private JComboBox<String> jComboBox1;
   private JScrollPane jScrollPane1;

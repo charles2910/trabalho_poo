@@ -59,26 +59,40 @@ public class EditProdutos extends JFrame {
 
   class BuscarActionListener implements ActionListener {
     public void actionPerformed(ActionEvent event) {
-      Produto p = Estoque.buscarProduto(campoPesquisa.getText());
-      if (p == null) JOptionPane.showMessageDialog(getContentPane(), "Produto Não Encontrado.");
-      else {
+
+      try {
+        Produto p = Estoque.buscarProduto(campoPesquisa.getText());
         campoNome.setText(p.getNome());
         campoQtd.setText(Integer.valueOf(p.getQuantidade()).toString());
         campoPreco.setText(Double.valueOf(p.getPreco()).toString());
+      } catch (NullPointerException e) {
+        JOptionPane.showMessageDialog(getContentPane(), "Produto Não Encontrado.");
       }
     }
   }
 
   class OkActionListener implements ActionListener {
     public void actionPerformed(ActionEvent event) {
-      Produto p = Estoque.buscarProduto(campoPesquisa.getText());
-      p.setNome(campoNome.getText());
-      p.setQuantidade(Integer.parseInt(campoQtd.getText()));
-      p.setPreco(Double.parseDouble(campoPreco.getText()));
-      JOptionPane.showMessageDialog(getContentPane(), "Produto Adicionado.");
-      setVisible(false);
-      dispose();
-      gerenciador.updateTable();
+      try {
+        Produto p = Estoque.buscarProduto(campoPesquisa.getText());
+        if ((Integer.parseInt(campoQtd.getText()) < 0)
+            || (Double.parseDouble(campoPreco.getText()) < 0)) {
+          JOptionPane.showMessageDialog(getContentPane(), "Valores Inválidos.");
+        } else {
+          p.setNome(campoNome.getText());
+          p.setQuantidade(Integer.parseInt(campoQtd.getText()));
+          p.setPreco(Double.parseDouble(campoPreco.getText()));
+          JOptionPane.showMessageDialog(getContentPane(), "Produto Editado Corretamente.");
+          setVisible(false);
+          dispose();
+          gerenciador.updateTable();
+          Estoque.gravarEstoque();
+        }
+      } catch (NullPointerException e) {
+        JOptionPane.showMessageDialog(getContentPane(), "Produto Não Selecionado.");
+      } catch (NumberFormatException e1) {
+        JOptionPane.showMessageDialog(getContentPane(), "Campos Numéricos com Formatação Errada.");
+      }
     }
   }
 

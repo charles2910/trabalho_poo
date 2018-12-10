@@ -51,14 +51,24 @@ public class AddProdutos extends JFrame {
 
   class AddActionListener implements ActionListener {
     public void actionPerformed(ActionEvent event) {
-      Estoque.adicionarProduto(
-          campoNome.getText(),
-          Integer.parseInt(campoQtd.getText()),
-          Double.parseDouble(campoPreco.getText()));
-      JOptionPane.showMessageDialog(getContentPane(), "Produto Adicionado.");
-      setVisible(false);
-      dispose();
-      gerenciador.updateTable();
+      try {
+        if ((Integer.parseInt(campoQtd.getText()) < 0)
+            || (Double.parseDouble(campoPreco.getText()) < 0)) {
+          JOptionPane.showMessageDialog(getContentPane(), "Valores Inválidos.");
+        } else {
+          Estoque.adicionarProduto(
+              campoNome.getText(),
+              Integer.parseInt(campoQtd.getText()),
+              Double.parseDouble(campoPreco.getText()));
+          JOptionPane.showMessageDialog(getContentPane(), "Produto Adicionado.");
+          setVisible(false);
+          dispose();
+          gerenciador.updateTable();
+          Estoque.gravarEstoque();
+        }
+      } catch (NumberFormatException e1) {
+        JOptionPane.showMessageDialog(getContentPane(), "Campos Numéricos com Formatação Errada.");
+      }
     }
   }
 
