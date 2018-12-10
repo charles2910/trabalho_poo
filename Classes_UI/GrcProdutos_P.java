@@ -27,8 +27,6 @@ public class GrcProdutos_P extends JPanel {
     jTable1 = new javax.swing.JTable();
     botaoAdd = new JButton();
     botaoEdit = new JButton();
-    botaoIn = new JButton();
-    botaoOut = new JButton();
     jButton5 = new JButton();
     jButton6 = new JButton();
     tableData1 =
@@ -67,22 +65,6 @@ public class GrcProdutos_P extends JPanel {
         new java.awt.event.MouseAdapter() {
           public void mouseClicked(java.awt.event.MouseEvent evt) {
             botaoEditClicked(evt);
-          }
-        });
-
-    botaoIn.setText("Entrada no Estoque");
-    botaoIn.addMouseListener(
-        new java.awt.event.MouseAdapter() {
-          public void mouseClicked(java.awt.event.MouseEvent evt) {
-            botaoInClicked(evt);
-          }
-        });
-
-    botaoOut.setText("Saída no Estoque");
-    botaoOut.addMouseListener(
-        new java.awt.event.MouseAdapter() {
-          public void mouseClicked(java.awt.event.MouseEvent evt) {
-            botaoOutClicked(evt);
           }
         });
 
@@ -138,20 +120,7 @@ public class GrcProdutos_P extends JPanel {
                                                         botaoEdit,
                                                         GroupLayout.PREFERRED_SIZE,
                                                         150,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(37, 37, 37)
-                                                    .addComponent(
-                                                        botaoIn,
-                                                        GroupLayout.PREFERRED_SIZE,
-                                                        150,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(34, 34, 34)
-                                                    .addComponent(
-                                                        botaoOut,
-                                                        GroupLayout.PREFERRED_SIZE,
-                                                        150,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(37, 37, 37))
+                                                        GroupLayout.PREFERRED_SIZE))
                                             .addComponent(
                                                 jScrollPane1,
                                                 GroupLayout.PREFERRED_SIZE,
@@ -177,13 +146,6 @@ public class GrcProdutos_P extends JPanel {
                                 botaoEdit,
                                 GroupLayout.PREFERRED_SIZE,
                                 70,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addComponent(
-                                botaoIn, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(
-                                botaoOut,
-                                GroupLayout.PREFERRED_SIZE,
-                                70,
                                 GroupLayout.PREFERRED_SIZE))
                     .addGap(29, 29, 29)
                     .addComponent(
@@ -202,25 +164,31 @@ public class GrcProdutos_P extends JPanel {
 
   private void botaoAddClicked(
       java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
-    new AbrirAddProdutos_F().makeFrameAddProdutos();
+    new AbrirAddProdutos_F().makeFrameAddProdutos(this);
   }
 
   private void botaoEditClicked(
       java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
-    janela.removeMenuGerencProdutos();
-    janela.menuOPC();
+    new AbrirEditProdutos_F().makeFrameEditProdutos(this);
   }
 
-  private void botaoInClicked(
-      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
-    janela.removeMenuGerencProdutos();
-    janela.menuOPC();
-  }
+  public void updateTable() {
+    tableData1 =
+        new javax.swing.table.DefaultTableModel(
+            new String[] {"Código", "Nome", "Quantidade", "Preço"}, 0);
 
-  private void botaoOutClicked(
-      java.awt.event.MouseEvent evt) { // GEN-FIRST:event_jButton6MouseClicked
-    janela.removeMenuGerencProdutos();
-    janela.menuOPC();
+    int size = Estoque.sizeOfEstoque();
+    if (size > 0) {
+      for (int i = 0; i < size; i++) {
+        Produto p = Estoque.buscarProduto(i);
+        if (p != null) {
+          Object[] data = p.toData();
+          data[0] = new Integer(i);
+          tableData1.addRow(data);
+        }
+      }
+    }
+    jTable1.setModel(tableData1);
   }
 
   private void jButton6MouseClicked(
@@ -234,8 +202,6 @@ public class GrcProdutos_P extends JPanel {
   private JFrame framePrincipal;
   private JButton botaoAdd;
   private JButton botaoEdit;
-  private JButton botaoIn;
-  private JButton botaoOut;
   private JButton jButton5;
   private JButton jButton6;
   private JComboBox<String> jComboBox1;

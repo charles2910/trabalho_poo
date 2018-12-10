@@ -12,20 +12,20 @@ import javax.swing.JFrame;
  *
  * @author charles
  */
-public class AbrirAddProdutos_F {
+public class AbrirEditProdutos_F {
 
-  private AddProdutos janelaAddProdutos;
+  private EditProdutos janelaEditProdutos;
 
   /**
    * Método que abre o menu de vendas
    *
    * @param vendedor usuário atual do programa
    */
-  public void makeFrameAddProdutos(GrcProdutos_P grcProd) {
-    janelaAddProdutos = new AddProdutos(grcProd);
-    janelaAddProdutos.setLocationRelativeTo(null);
-    janelaAddProdutos.setTitle("Adicionar Produto");
-    janelaAddProdutos.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    janelaAddProdutos.setVisible(true);
+  public void makeFrameEditProdutos(GrcProdutos_P grcProd) {
+    janelaEditProdutos = new EditProdutos(grcProd);
+    janelaEditProdutos.setLocationRelativeTo(null);
+    janelaEditProdutos.setTitle("Editar Produto");
+    janelaEditProdutos.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    janelaEditProdutos.setVisible(true);
   }
 }

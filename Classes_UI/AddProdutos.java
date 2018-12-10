@@ -17,7 +17,8 @@ import javax.swing.*;
  * @author niloc
  */
 public class AddProdutos extends JFrame {
-  public AddProdutos() {
+  public AddProdutos(GrcProdutos_P grcProd) {
+    this.gerenciador = grcProd;
     initComponents();
   }
 
@@ -57,6 +58,7 @@ public class AddProdutos extends JFrame {
       JOptionPane.showMessageDialog(getContentPane(), "Produto Adicionado.");
       setVisible(false);
       dispose();
+      gerenciador.updateTable();
     }
   }
 
@@ -73,4 +75,5 @@ public class AddProdutos extends JFrame {
   private JTextField campoPreco;
   private JButton botaoAddOk;
   private JButton botaoCancelar;
+  private GrcProdutos_P gerenciador;
 }
