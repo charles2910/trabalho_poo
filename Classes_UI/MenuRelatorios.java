@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes_UI;
 
-import javax.swing.ButtonGroup;
-import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -146,25 +139,13 @@ public class MenuRelatorios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void ButtonGroup(){
-         this.getContentPane().setLayout(new FlowLayout());
-         jRadioButton1.setSelected(true);
-         ButtonGroup buttonGroup = new ButtonGroup();
-         buttonGroup.add(jRadioButton1);
-         buttonGroup.add(jRadioButton2);
-         add(jRadioButton1);
-         add(jRadioButton2);
-
-    }
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        jRadioButton2.setSelected(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jRadioButton1.isSelected()){
-            jTextArea1.setText(" ");
             File file = new File("logVendas.txt"); 
             try {   
             FileReader reader = new FileReader(file); 
@@ -178,7 +159,6 @@ public class MenuRelatorios extends javax.swing.JFrame {
         
         else
         if(jRadioButton2.isSelected()){ 
-            jTextArea1.setText(" ");
             File file = new File("Estoque.txt"); 
             try {   
             FileReader reader = new FileReader(file); 
@@ -192,8 +172,13 @@ public class MenuRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        jRadioButton1.setSelected(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

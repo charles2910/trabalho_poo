@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes_UI;
 
 import Classes_Base.Usuário;
@@ -13,7 +8,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Mateus
+ * @author Mateus 9266410
  */
 public class Novo_Usuário_P extends javax.swing.JPanel {
 

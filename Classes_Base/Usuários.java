@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Mateus
+ * @author Mateus 9266410
  */
 public class Usuários {
     private ArrayList<Usuário> listaUsuários;
@@ -27,9 +27,8 @@ public class Usuários {
         this.ADMcount = 0;
         for(Usuário u : listaUsuários){
             if(u.isADM()) ADMcount++;
-        }
-        
-        
+        }     
+        fileSaver.saveUserList(listaUsuários);
     }
     
     public int getADMcount(){

@@ -28,10 +28,11 @@ public class UIGovernor_F extends JFrame{
     private static void Saudação(){
         //Saudação inicial do programa, informando os membros do grupo e o propósito do trabalho
         JOptionPane.showMessageDialog(null, "Este é o trabalho de POO de controle de estoque de um Pet-Shop  \n\n"
-                + "Equipe:\nMateus Medeiros 9266410\n"
-                + "Nome nusp\n"
-                + "Nome nusp\n"
-                + "Nome nusp\n\n"
+                + "Equipe:"
+                + "\nMateus Medeiros - 9266410"
+                + "\nNilo Conrado Messias Alves Cangerana - 9805362"
+                + "\nGabriel Caurin Correa - 9805081"
+                + "\nCarlos Henrique Lima Melara 9805380 \n\n"
                 + "SCC0604 - Programação Orientada a Objetos\n"
                 + "Prof. Dilvan de Abreu Moreira - Universidade de São Paulo\n"
                 + "São Carlos - Novembro de 2018\n");

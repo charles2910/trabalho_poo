@@ -3,6 +3,11 @@ package Classes_UI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Mateus 9266410
+ */
+
 public class NovoUsuario_F extends JFrame{
     JPanel painel;
     

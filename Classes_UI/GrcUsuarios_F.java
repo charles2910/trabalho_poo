@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes_UI;
 
 import java.awt.event.WindowEvent;
@@ -11,7 +6,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Mateus
+ * @author Mateus 9266410
  */
 public class GrcUsuarios_F extends JFrame {
    
