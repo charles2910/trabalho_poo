@@ -6,16 +6,11 @@ public class Main
 {
         public static void  main(String[] args) {
             ListaDeVendas.lerLogVendas();
+            
             Estoque loja = new Estoque();  
-
+            
             Usuários UserBase = new Usuários();
-            
-            Usuário teste = new Usuário("User1(sem senha) ", "", true);
-            Usuário teste2 = new Usuário("User 2(sem senha) ", "", false);
-          
-            UserBase.addUsuário(teste);
-            UserBase.addUsuário(teste2);
-            
+            //Frame principal:
             UIGovernor_F UImaster = new UIGovernor_F(UserBase);
             
             Estoque.lerEstoque();

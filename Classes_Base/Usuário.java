@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * Classe que descreve um usuário, com password e senha.
- * @author Mateus
+ * @author Mateus 9266410
  */
 public class Usuário implements Serializable{
     private String ID;
