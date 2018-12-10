@@ -8,9 +8,17 @@ import java.util.ArrayList;
  */
 public class Usuários {
     private ArrayList<Usuário> listaUsuários;
-    
+    Usuários_Serialize fileSaver = new Usuários_Serialize();
     private int ADMcount = 0;
     
+
+    Usuários(){
+        listaUsuários = fileSaver.getUserList();  //recupera a lista de usuários do arquivo
+        if (listaUsuários == null){
+            listaUsuários = new ArrayList<>();
+        }
+        
+    }
     
     //Sempre que a base de usuários for mexida (ex: alterar senha, ID, inclusão 
     //de novo usuário, alterar status de ADM, etc) esse método deverar ser chamado.
@@ -21,27 +29,20 @@ public class Usuários {
             if(u.isADM()) ADMcount++;
         }
         
+        
     }
     
     public int getADMcount(){
         return this.ADMcount;
     }
     
-    Usuários(){
-        listaUsuários = new ArrayList<>();
-        
-    }
-    
+
     public void addUsuário(Usuário u){
         listaUsuários.add(u);
     }
     
     public ArrayList<Usuário> getUserList(){
         return listaUsuários;
-    }
-    
-    public void recuperaListaDoArquivo(){
-        
     }
     
     public void removerUsuário(Usuário r){

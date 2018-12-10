@@ -119,6 +119,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emitRelatorios_bot&#xe3;oActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="uspLogo_label">
       <Properties>

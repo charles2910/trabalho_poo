@@ -21,7 +21,7 @@ public class GrcProdutos_P extends JPanel {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-    this.framePrincipal = janela.getFrame();
+    // this.framePrincipal = janela.getFrame();
     jComboBox1 = new JComboBox<>();
     jScrollPane1 = new JScrollPane();
     jTable1 = new javax.swing.JTable();
