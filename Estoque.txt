@@ -1,4 +1,4 @@
-Café 3 10.0
+Café 2 10.0
 Macarrão 10 7.0
 Cereal 20 18.0
 Cereal1 20 18.0
@@ -24,3 +24,4 @@ Cereal21 20 18.0
 Comida 4 3.99
 mouse 12 100.0
 tecladinho 12 160.0
+Casa 1 50000.0

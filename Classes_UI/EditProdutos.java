@@ -63,7 +63,7 @@ public class EditProdutos extends JFrame {
       if (p == null) JOptionPane.showMessageDialog(getContentPane(), "Produto Não Encontrado.");
       else {
         campoNome.setText(p.getNome());
-        campoQtd.setText(Double.valueOf(p.getQuantidade()).toString());
+        campoQtd.setText(Integer.valueOf(p.getQuantidade()).toString());
         campoPreco.setText(Double.valueOf(p.getPreco()).toString());
       }
     }
